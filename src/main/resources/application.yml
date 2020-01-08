@@ -1,0 +1,27 @@
+server:
+  port: 7777
+
+
+spring:
+  application:
+    name: hello-rabbitmq
+  datasource: # 数据源
+    primary:  # mysql Datasource
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: Realsee-iso@2019
+      jdbc-url: jdbc:mysql://218.85.122.163:43306/rs_iso?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=GMT%2B8
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin
+    listener:
+      simple:
+        retry:
+          enabled: true
+          max-attempts: 3
+          initial-interval: 3000
+        default-requeue-rejected: true
